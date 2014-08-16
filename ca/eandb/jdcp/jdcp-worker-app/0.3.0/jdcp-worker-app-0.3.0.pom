@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>jdcp</artifactId>
+    <groupId>ca.eandb.jdcp</groupId>
+    <version>0.3.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jdcp-worker-app</artifactId>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>Java Distributed Computing Platform: Worker Swing application</description>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer>
+                  <mainClass>ca.eandb.jdcp.worker.MainWindow</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <descriptor>${project.parent.basedir}/src/assembly/bin.xml</descriptor>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
